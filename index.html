@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fundación - Siempre A La Mano</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/all.min.js" integrity="sha512-b+nQTCdtTBIRIbraqNEwsjB6UvL3UEMkXnhzd8awtCYh0Kcsjl9uEgwVFVbhoj3uu1DO1ZMacNvLoyJJiNfcvg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <style>
+    :root {
+      --color-dark: #03045e;
+      --color-primary: #0077b6;
+      --color-secondary: #00b4d8;
+      --color-accent: #90e0ef;
+      --color-light: #caf0f8;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    /* Dark mode */
+    body.dark-mode {
+      background-color: #121212;
+      color: white;
+    }
+
+    .dark-mode .navbar, .dark-mode footer {
+      background-color: #333 !important;
+    }
+
+    /* Navbar */
+    .navbar {
+      background-color: var(--color-dark);
+    }
+    .navbar .nav-link, .navbar-brand, .btn-outline-secondary {
+      color: var(--color-light) !important;
+    }
+    .navbar .dropdown-menu {
+      background-color: var(--color-primary);
+    }
+    .navbar .dropdown-menu .dropdown-item:hover {
+      background-color: var(--color-secondary);
+      color: var(--color-light);
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--color-dark);
+      color: var(--color-light);
+    }
+
+    /* Botón flotante */
+    .btn-whatsapp {
+            position: fixed;
+            bottom: 100px;
+            right: 20px;
+            background-color: #25d366;
+            color: white;
+            border-radius: 50%;
+            padding: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+
+    .floating-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: var(--color-secondary);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+      cursor: pointer;
+    }
+    .floating-btn:hover {
+      background-color: var(--color-primary);
+    }
+
+    /* Botón flecha hacia arriba */
+    .to-top-btn {
+      position: fixed;
+      bottom: 100px;
+      right: 20px;
+      background-color: var(--color-dark);
+      color: var(--color-light);
+      border: none;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+      cursor: pointer;
+    }
+    .to-top-btn.show {
+      display: flex;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">Fundación <strong>Siempre A La Mano</strong></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="nosotros.html">Nosotros</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">Noticias</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Evento 1</a></li>
+              <li><a class="dropdown-item" href="#">Evento 2</a></li>
+              <li><a class="dropdown-item" href="#">Evento 3</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="contactenos.html">Contáctenos</a></li>
+        </ul>
+        <button class="btn btn-outline-secondary ms-3" id="toggle-mode">Modo Día/Noche</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Slider -->
+  <div id="carouselExampleIndicators" class="carousel slide slider" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="img1.jpg" class="d-block w-100" alt="Imagen 1">
+      </div>
+      <div class="carousel-item">
+        <img src="img2.jpg" class="d-block w-100" alt="Imagen 2">
+      </div>
+      <div class="carousel-item">
+        <img src="img3.jpg" class="d-block w-100" alt="Imagen 3">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
+  </div>
+<!-- Secciones -->
+<section class="p-5">
+  <div class="container my-5">
+    <h2>Acerca de Nosotros</h2>
+   <!-- <p>Información sobre la fundación...</p>-->
+    
+    <!-- Nosotros Page -->
+  
+      <!--<h1 class="text-center">Sobre Nosotros</h1>-->
+      <p class="mt-4">En la Fundación Siempre a la Mano, estamos comprometidos con mejorar la calidad de vida de nuestras comunidades a través de proyectos solidarios y educativos. Nuestro enfoque está en la inclusión, el desarrollo social y el acceso a recursos esenciales.</p>
+      <p>Con un equipo dedicado de voluntarios y socios, trabajamos día a día para construir un mundo más equitativo, llevando esperanza y oportunidades a quienes más lo necesitan.</p>
+      <p>Nuestro compromiso es contigo, con tu familia y con nuestras comunidades.</p>
+  
+  </div>
+</section>
+
+<section class="p-5 bg-light">
+  <div class="container">
+    <h2>Ubicación</h2>
+    <p>Estamos ubicados en...</p>
+  </div>
+</section>
+
+<section class="p-5">
+  <div class="container">
+    <h2>Últimas Actividades</h2>
+    <p>Contenido relacionado con actividades...</p>
+  </div>
+</section>
+
+<!-- Footer -->
+<!--<footer class="bg-dark text-light text-center py-3">-->
+  <footer class="text-center py-4">
+    <p>Contáctanos: +57 311 496 6578 - MANZANA MZ 49 LOTE 5, MONTERIA, CORDOBA</p>
+  <p>© 2025 Fundación. Todos los derechos reservados.</p>
+</footer>
+
+
+  <!-- Botones flotantes -->
+  <a href="https://wa.me/1234567890" class="btn-whatsapp" target="_blank"><img src="https://img.icons8.com/ios-filled/50/ffffff/whatsapp.png" alt="WhatsApp"></a>
+  <!--<button class="floating-btn" onclick="window.open('https://wa.me/573114966578', '_blank')">
+    <i class="fab fa-whatsapp"></i>
+  </button>-->
+  <button class="to-top-btn" id="toTopBtn">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <script>
+    const toggleMode = document.getElementById('toggle-mode');
+    const toTopBtn = document.getElementById('toTopBtn');
+
+    // Toggle dark mode
+    /*toggleMode.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+    });*/
+      // Load dark mode preference from local storage
+      if (localStorage.getItem('dark-mode') === 'enabled') {
+            document.body.classList.add('dark-mode');
+        }
+
+        toggleMode.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const isDarkMode = document.body.classList.contains('dark-mode');
+            localStorage.setItem('dark-mode', isDarkMode ? 'enabled' : 'disabled');
+        });
+    // Show/hide "to top" button
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        toTopBtn.classList.add('show');
+      } else {
+        toTopBtn.classList.remove('show');
+      }
+    });
+
+    // Scroll to top
+    toTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
